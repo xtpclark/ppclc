@@ -34,6 +34,9 @@ function template_preprocess_calendar_month(&$vars) {
 
   $month_rows = $rows;
   foreach ($rows as $weekno => $row) {
+if (!isset($data['data'])) {
+    continue;
+    }
     foreach ($row as $day => $data) {
       $cell = $data['data'];
 
