@@ -1649,7 +1649,7 @@ div.admin-panel .description {
   background-color: #ddd;
 }
 
-.node-artgallery {
+.node-gallery {
   float: left;
   width: 150px;
   height: 150px;
@@ -1657,19 +1657,19 @@ div.admin-panel .description {
   margin: 0 60px 50px 0;
 }
 
-.node-artgallery img {
+.node-gallery img {
   position: absolute;
   bottom:0px;
 }
 
-.node-artgallery .image1 {left: 0px;
+.node-gallery .image1 {left: 0px;
   z-index: 3;
   -webkit-transition:all 0.2s ease;
   -moz-transition:all 0.2s ease;
   -o-transition:all 0.2s ease
 }
 
-.node-artgallery .image2 {left: 7px;
+.node-gallery .image2 {left: 7px;
   height: 148px;
   z-index: 2;
   -webkit-transition:all 0.2s ease;
@@ -1677,7 +1677,7 @@ div.admin-panel .description {
   -o-transition:all 0.2s ease
 }
 
-.node-artgallery .image3 {left: 14px;
+.node-gallery .image3 {left: 14px;
   height: 145px;
   z-index: 1;
   -webkit-transition:all 0.2s ease;
@@ -1692,7 +1692,7 @@ div.admin-panel .description {
   -webkit-transform:rotate(0deg) translate(0px);
 }
 
-.node-artgallery:hover .image1{
+.node-gallery:hover .image1{
    z-index: 6;
   -ms-transform: rotate(-5deg) translate(-40px, -2px);
   -ms-transform-origin:center bottom;
@@ -1704,7 +1704,7 @@ div.admin-panel .description {
   -o-transform-origin:center bottom;
 }
 
-.node-artgallery:hover .image2{
+.node-gallery:hover .image2{
    z-index: 5;
   -ms-transform: rotate(-2deg) translate(0px, 2px);
   -ms-transform-origin:center bottom;
@@ -1716,7 +1716,7 @@ div.admin-panel .description {
   -o-transform-origin:center bottom;
 }
 
-.node-artgallery:hover .image3{
+.node-gallery:hover .image3{
    z-index: 4;
   -ms-transform: rotate(5deg) translate(40px,-2px);
   -ms-transform-origin:center bottom;
@@ -1727,3 +1727,29 @@ div.admin-panel .description {
   -o-transform: rotate(5deg) translate(40px,-2px);
   -o-transform-origin:center bottom;
 }
+
+/* ---------------- BoardMember Pages -------------- */
+
+.node-boardmember .field-type-image {
+  float: left; /* LTR */
+//  margin: 0.5em 0 1em 1em; /* LTR */
+  margin: 10px 10px 10px 10px; /* LTR */
+}
+
+.node-boardmember .field-type-image img {
+  display: block;
+  padding: 5px 5px 5px 5px;
+  border:1px solid #;
+  border-radius: 20px;
+  -khtml-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-box-shadow: 3px 3px 4px #000;
+  -webkit-box-shadow: 3px 3px 4px #000;
+  box-shadow: 3px 3px 4px #000;
+  /* For IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+  /* For IE 5.5 - 7 */
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
+
