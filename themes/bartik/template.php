@@ -40,6 +40,15 @@ function bartik_process_html(&$variables) {
  * Override or insert variables into the page template.
  */
 function bartik_process_page(&$variables) {
+//Fancybox Gallery
+drupal_add_js(drupal_get_path('theme', 'bartik') . '/js/jquery.mousewheel-3.0.6.pack.js');
+drupal_add_js(drupal_get_path('theme', 'bartik') . '/js/fancybox/jquery.fancybox.pack.js');
+drupal_add_css(drupal_get_path('theme', 'bartik') . '/js/fancybox/jquery.fancybox.css');
+$fancybox = "jQuery(document).ready(function() {
+    jQuery('.fancybox').fancybox();
+});";
+drupal_add_js($fancybox, 'inline');
+
   // Hook into color.module.
   if (module_exists('color')) {
     _color_page_alter($variables);

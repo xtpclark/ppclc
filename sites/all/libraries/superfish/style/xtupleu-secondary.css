@@ -1,0 +1,64 @@
+.sf-menu.sf-style-xtupleu-secondary {
+  float: right;
+  margin-bottom: 1em;
+  padding: 0;
+}
+.sf-menu.sf-style-xtupleu-secondary.sf-navbar {
+  width: 100%;
+}
+.sf-menu.sf-style-xtupleu-secondary ul {
+  padding-left: 4px;
+}
+.sf-menu.sf-style-xtupleu-secondary a {
+  border: 0px outset transparent;
+  color: #ffffff;
+  padding: 0.75em 1em;
+}
+.sf-menu.sf-style-xtupleu-secondary a.sf-with-ul {
+  padding-right: 2.25em;
+}
+.sf-menu.sf-style-xtupleu-secondary.rtl a.sf-with-ul {
+  padding-left: 2.25em;
+  padding-right: 1em;
+}
+.sf-menu.sf-style-xtupleu-secondary.sf-navbar a {
+  border: 0;
+}
+.sf-menu.sf-style-xtupleu-secondary span.sf-description {
+  color: #ffffff;
+  display: block;
+  font-size: 0.8em;
+  line-height: 1.5em;
+  margin: 5px 0 0 5px;
+  padding: 0;
+}
+.sf-menu.sf-style-xtupleu-secondary li,
+.sf-menu.sf-style-xtupleu-secondary.sf-navbar {
+  background: #fe6000;
+  border-radius: 4px;
+  margin-left: 12px;
+}
+.sf-menu.sf-style-xtupleu-secondary li li {
+  background: #fe6000;
+}
+.sf-menu.sf-style-xtupleu-secondary li li li {
+  background: #fe6000;
+}
+.sf-menu.sf-style-xtupleu-secondary li:hover,
+.sf-menu.sf-style-xtupleu-secondary li.sfHover,
+.sf-menu.sf-style-xtupleu-secondary li.active a,
+.sf-menu.sf-style-xtupleu-secondary a:focus,
+.sf-menu.sf-style-xtupleu-secondary a:hover,
+.sf-menu.sf-style-xtupleu-secondary a:active,
+.sf-menu.sf-style-xtupleu-secondary.sf-navbar li li {
+  background: #FF8E49;
+  color: #ffffff;
+  border: 0px outset transparent;
+  border-radius: 4px;
+}
+.sf-menu.sf-style-xtupleu-secondary.sf-navbar li ul {
+  background-color: #fe6000;
+}
+.sf-menu.sf-style-xtupleu-secondary.sf-navbar li ul li ul {
+  background-color: transparent;
+}

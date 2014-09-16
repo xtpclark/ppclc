@@ -431,6 +431,13 @@ function wysiwyg_tinymce_plugins($editor) {
         'charmap' => t('Character map'),
         'help' => t('Help'),
       ),
+      'media' => array(
+      'path' => $editor['library path'] .'/plugins/media',
+      'buttons' => array('media' => t('Insert media')),
+      'url' => 'http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/media',
+      'internal' => TRUE,
+      'load' => TRUE,
+    ),
       'internal' => TRUE,
     ),
     'advhr' => array(

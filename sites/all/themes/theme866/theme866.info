@@ -1,0 +1,72 @@
+; $Id: theme866.info,v 1.9 Selen Exp $
+
+; Theme Info -----------------------------------------------------------------
+; required information about the theme
+
+name = theme866
+description = This template is made by <a href="http://template-help.com">template-help.com</a>
+screenshot = screenshot.png
+core = 7.x
+engine = phptemplate
+
+; Stylesheets  ---------------------------------------------------------------
+; We use [screen] instead of [all] to avoid browser styles affecting 
+; other media types.
+
+stylesheets[screen][] = css/boilerplate.css
+stylesheets[screen][] = css/style.css
+stylesheets[screen][] = css/maintenance-page.css
+stylesheets[screen][] = css/skeleton.css
+
+
+scripts[] = js/theme866.core.js
+scripts[] = js/jquery.loader.js
+scripts[] = js/jquery.debouncedresize.js
+scripts[] = js/jquery.mobilemenu.js
+scripts[] = js/jquery.cookie.js
+
+; Regions --------------------------------------------------------------------
+; these content regions are available for block placement
+; some are special hidden regions: page_top, page_bottom, and help
+
+; these are the stock regions
+regions[info_block] = Info Block
+regions[header_top] = Header Top
+regions[header] = Header
+regions[header_bottom] = Header Bottom
+regions[menu] = Menu
+regions[help] = Help
+
+regions[content_top] = Content Top
+regions[content] = Content
+regions[content_bottom] = Content Bottom
+
+regions[sidebar_first] = Sidebar Left
+regions[sidebar_second] = Sidebar Right
+
+regions[page_top] = Page Top
+regions[page_bottom] = Page Bottom
+
+regions[footer] = Footer
+
+regions[highlighted] = Highlighted
+
+; Options --------------------------------------------------------------------
+; these are the checkboxes that are available on the theme settings page.
+
+; additional theme settings
+settings[theme866_feed_icons] = 0
+settings[theme866_clear_registry] = 0
+settings[theme866_tabs_float] = 0
+settings[theme866_tabs_node] = 1
+settings[theme866_breadcrumb_display]   = no
+settings[theme866_breadcrumb_hideonlyfront] = 1
+settings[theme866_breadcrumb_showtitle] = 0
+settings[theme866_breadcrumb_separator] = '»'
+
+; Information added by drupal.org packaging script on 2011-11-10
+version = "7.x-1.0"
+core = "7.x"
+project = "theme866"
+datestamp = "1320946536"
+

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Drupal Documentation</title>
+  <meta charset="utf-8">
+  
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+  
+  <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="css/fonts.css" type="text/css" media="all">
+  <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="all">
+  <script type="text/javascript" src="js/jquery-1.5.1.min.js" ></script>
+  <script type="text/javascript" src="js/jquery.prettyPhoto.js" ></script>
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		// prettyphoto init
+  		jQuery("a[rel^='prettyPhoto']").prettyPhoto({
+  			animationSpeed:'slow',
+  			theme:'facebook',
+  			slideshow:false,
+  			autoplay_slideshow: false,
+  			show_title: true,
+  			overlay_gallery: false
+  		});
+  	});
+  </script>
+  <!--[if lt IE 7]>
+  	<link rel="stylesheet" href="css/ie/ie6.css" type="text/css" media="screen">
+    <script type="text/javascript" src="js/ie_png.js"></script>
+    <script type="text/javascript">
+        ie_png.fix('.png');
+    </script>
+  <![endif]-->
+  <!--[if lt IE 9]>
+  	<script type="text/javascript" src="js/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div id="main">
+  	<div class="inside">
+    	<!-- header -->
+      <header id="header">
+        <div class="inside">
+          <h1>Documentation for Drupal theme866</h1>
+        </div>
+      </header>
+      <section id="content">
+        <article>
+          <h2>Table of Contents</h2>
+          <div class="inner">
+          	<ol class="table_content">
+              <li><a href="#prepare">Preparations</a>
+              	<ul>
+                	<li><a href="#engine-install">Downloading Drupal engine</a></li>
+                    <li><a href="#upload-engine">Uploading Drupal engine files</a></li>
+                    <li><a href="#create-database">Creating the Database</a></li>
+                </ul>
+              </li>
+            
+              <li><a href="#engine-install">Drupal theme installation</a>
+                <ul>
+                	<li><a href="#theme-install-sample-data">Installing Drupal theme with sample data</a></li>
+                	<li><a href="#theme_install-no-sample">Installing Drupal theme without sample data</a></li>
+                </ul>
+              </li>
+              <li><a href="#theme-install-over">Installing Drupal theme over existing website</a>
+              	<ul>
+              		<li><a href="#theme_install-over-sample">Installing Drupal theme WITH sample data over existing website</a></li>
+                    <li><a href="#theme_install-over-nosample">Installing Drupal theme WITHOUT sample data over existing website.</a></li>
+              	</ul>
+              </li>
+              <li><a href="#blocks-layout">Blocks Layout Configuration</a></li>
+              <li><a href="#blocks-editing">Blocks appearance settings and content editing</a></li>
+              <li><a href="#manage_menu">Setup and manage Main Menu</a></li>
+              <li><a href="#configure_follow">How to configure Follow Site block</a></li>
+              <li><a href="#edit_slider">How to edit slider</a></li>
+              <li><a href="#manage_content">How to manage content pages</a></li>
+              <li><a href="#conclusion">Conclusion</a></li>
+            </ol>
+          </div>
+        </article>
+        
+        
+        <!-- Getting started begin -->
+        <article>
+        <h2 id="prepare">1. Preparations</h2>
+        <div class="inner">
+          
+            <h3 id="download-engine">Downloading Drupal engine</h3>
+            <div class="inner">
+       	    <p>The first step of Drupal website setup is to download the Drupal engine. Drupal engine is a .zip package with Drupal content management system (CMS) core files. Without these files you won't be able to run the Drupal website. </p>
+                <p>Drupal engine can be downloaded from the official website at <a href="http://drupal.org/download" target="_blank">http://drupal.org/</a></p>
+                
+            	<p align="center"><img src="images/drupal-download.jpg"></p>
+            
+            	<p>Click the "<strong>Download Drupal</strong>" button to get the most recent version of Drupal engine. In case you need the earlier version of drupal please click "<strong>Other Releases</strong>" link </p>
+            	<p class="notification-box">Please check the template requirements and make sure you are downloading the correct version of Drupal engine</p>
+                  
+			</div>
+            
+			<h3 id="upload-engine">Uploading Drupal engine files</h3>
+			<div class="inner">
+		    <p>As soon as you are done with Drupal engine download please extract the files from the downloaded engine package and upload them to your hosting server.</p>
+				<p>Drupal engine files should be uploaded into the root directory on your hosting server. It is usually called "<strong>www</strong>" or "<strong>public_html</strong>". If you are not sure please contact your hosting provider for more details. </p>
+				<p>The files can be uploaded to the hosting server using the FTP managers like <strong>FileZilla</strong>, <strong>TotalCommander</strong> etc. You can also check your hosting control panel if there is a <strong>File Manager</strong> available. It can also be used to upload files to the hosting server. </p>
+				<p>Feel free to check the detailed video tutorials on <a href="http://info.template-help.com/how-upload-files-server-2.html" target="_blank">how to upload the files</a></p>
+			</div>
+          
+			<h3 id="create-database">Creating Database</h3>
+			<div class="inner">
+		    <p>Drupal CMS requires MySQL database to run. Database can be created using the hosting control panel. You can check the tutorial on <a href="http://info.template-help.com/how-create-database.html" target="_blank">how to create the database</a> or contact your hosting provider to get help. </p>
+				<p>In the process of creating the database you'll get the database access details: </p>
+				<ul>
+					<li>Database server or hostname</li>
+					<li>Database name</li>
+					<li>Database username</li>
+					<li>Password</li>
+				</ul>
+        <p class="notification-box">Please make sure the tables of your database have no prefixes.</p>
+				<p class="info-box">Take a note of these details as you'll need them for Drupal installation</p>
+			</div>
+        </div>
+          
+        <h2 id="engine-install">2. Drupal theme installation</h2>
+			<div class="inner">
+          
+		    <p>This step shows how to install Drupal engine to your hosting server. Please follow this step if you don't have Drupal engine installed on your server. </p>
+          	
+				<p>Before you proceed please decide whether you want to install the template sample data or if you want to have a clean Drupal installation. Template Sample data will make your template look like the template preview page. All sample modules, text blocks, images etc will be installed. </p>
+            
+				<p>If you are not willing to install the template sample data please proceed will Drupal engine installation. In your browser type your domain name and follow the instructions on the screen. The detailed text and video tutorial will help you to <a href="http://info.template-help.com/how-upload-and-install-drupal-server.html">install Drupal engine</a>. </p>
+            
+				<p>Otherwise please proceed to the next step.</p>
+            
+			</div>
+           
+			<div class="inner">
+		    <h3 id="theme-install-sample-data">Installing Drupal theme with sample data</h3>
+				<div class="inner">
+           
+			    <p>Most recent Drupal templates are provided with the sample data demo profile. It allows you to install the template sample data during the initial Drupal installation. </p>
+           
+					<p class="notification-box">Sample data demo profile should be uploaded BEFORE you install the Drupal engine</p>
+           
+					<p>To install the sample data profile please do the following:</p>
+           
+					<ol>
+						<li>Upload the "<strong>sites/</strong>" folder from the template package to the root of Drupal installation. This folder contains Drupal theme files</li>
+						<li>Upload the "<strong>demo_profile/</strong>" folder from the template "<strong>sources</strong>/" directory to the "<strong>profiles/</strong>" of your Drupal installation.</li>
+						<li>Upload the &quot;<strong>install.inc</strong>&quot; file from the template "<strong>sources/</strong>" directory to the &quot;<strong>includes/</strong>&quot; directory of your Drupal installation. Replace the existing file.</li>
+						<li>
+							<p>Upload the &quot;<strong>system.install</strong>&quot; file from the template "<strong>sources/</strong>" directory to the &quot;<strong>modules/system</strong>&quot; directory of your Drupal installation. Replace the existing file.</p>
+							<p class="info-box">Replacement of these files will add a new option to the installation process so it will not affect your installation in any way. </p>
+						</li>
+						<li><p>Type your domain name in your browser's address bar to start Drupal installation procedure. The initial installation page will let you choose the installation profile.</p> 
+						<p align="center"><img alt="" src="images/drupal-install.jpg" /></p></li>
+						
+						<li>Select "<strong>Demonstration site</strong>". Then click "<strong>Save and Continue</strong>" button.</li>
+						<li>Follow the instructions on the screen to install Drupal engine. Feel free to check the detailed tutorial on <a href="http://info.template-help.com/how-to-install-drupal-template-using-demo-profile-possible-issues.html" target="_blank">how to install Drupal with theme sample data</a></li>
+						<li><p>On the last step of the installation procedure choose snapshot as shown on the image below and click &quot;<strong>Restore</strong>&quot; button:</p>
+						<p align="center"><img alt="" src="images/finish-install.jpg" /></p></li>
+                
+						<li>Drupal installation is almost complete. The last thing to do is to update the database tables. In your browser address bar type <strong>http://www.example.com/update.php </strong>(replace <strong>www.example.com</strong> with your domain name)</li>
+					</ol>
+			
+					<p class="info-box">To login as website administrator use the following details: username: admin;  password: admin123</p>
+				</div>
+            
+            
+				<h3 id="theme_install-no-sample">Installing Drupal theme without sample data</h3>
+				<div class="inner">
+            
+				  <ol>
+						<li> Upload "<strong>sites/all/themes/</strong>" folder content from the template package to the "<strong>sites/all/themes/</strong>" directory of your Drupal installation. This folder contains Drupal theme files</li>
+						<li>Open Drupal website and login as an administrator>
+						<li><p>From the top menu select &quot;<strong>Appearance</strong>&quot;.</p>
+                
+						<p align="center"><img src="images/drupal-admin-appearance.jpg"></p>
+                
+						Locate your installed theme and click &quot;<strong>Set as Default</strong>&quot;</li>
+					</ol>
+            
+					<p>Theme is activated now and you can proceed to the modules setup</p>
+				</div>
+			</div>
+       
+		<h2 id="theme-install-over">3. Installing Drupal theme over existing website</h2>
+       
+			<div class="inner">
+            
+		    <h3 id="theme_install-over-sample">Installing Drupal theme WITH sample data over existing website</h3>
+				<div class="inner">
+            
+			    <p class="error-box">Installing the theme sample content over the existing Drupal installation will erase all your website content and replace it with the sample one</p>
+            
+					<p class="notification-box">ALWAYS backup your database before performing any modifications</p>
+            
+					<p>If you have a running Drupal website and still want to install the theme with sample data please follow the instructions below:</p>
+					
+					<ol>
+						<li>Open the template package and go to the "<strong>sites/</strong>" folder. Open "<strong>all/</strong>" folder and upload its content to the &quot;<strong>sites\all</strong>&quot; directory of your Drupal installation</li>
+						<li>Go back to the "<strong>sites/</strong>" folder. Open the &quot;<strong>default/</strong>&quot; folder and upload its content to the "<strong>sites/default</strong>" directory on your server. DO NOT upload the &quot;<strong>settings.php</strong>&quot; and &quot;<strong>default.settings.php</strong>&quot; files.</li>
+            <li>Open "<strong>Configuration -> File system</strong>" page and set "<strong>Private file system path</strong>" to "<strong>sites/default/private/files</strong>".</li>
+						<li>Login to Drupal website as administrator, go to &quot;<strong>Modules</strong>&quot; and make sure the &quot;<strong>Demonstration site</strong>&quot; module is enabled</li>
+						<li>Go to &quot;<strong>Structure -> Snapshots</strong>&quot; page, select snapshot &quot;<strong>theme866</strong>&quot; and click the &quot;<strong>Reset</strong>&quot; button.</li>
+					</ol>
+					
+					<p>The last thing you need to do is to update the database tables. In your browser address bar type <strong>http://www.example.com/update.php</strong> (replace www.example.com with your domain name) </p>
+					<p class="info-box">To login as website administrator use the following details: username: admin;  password: admin123</p>
+				</div>
+            
+            
+				<h3 id="theme_install-over-nosample">Installing Drupal theme WITHOUT sample data over existing website. </h3>
+			
+				<div class="inner">
+				  <p>If you already have a running Drupal website and want to install the purchased theme you just need to upload the theme files and activate the theme in Drupal administration panel. The procedure is similar to the regular Drupal theme installation. </p>
+				</div>
+
+    
+			</div>
+			
+			<h2 id="blocks-layout">4. Blocks Layout Configuration</h2>
+				<div class="inner">
+			    <p>To configure theme blocks layout you need:</p>
+					<ol>
+						<li>Login to Drupal website as administrator</li>
+						<li>
+                        	<p>From the top menu select &quot;<strong>Structure</strong>&quot; and go to &quot;<strong>Blocks</strong>&quot; section</p>
+                        	<p align="center"><img src="images/drupal-block-regions.jpg"></p>
+                        </li>
+						<li>On the opened page you can drag&drop blocks to the different regions.</li>
+					</ol>
+				</div>
+                
+                
+      <h2 id="blocks-editing">5. Blocks appearance settings and content editing.</h2>
+            <div class="inner">
+            <p>Please open <strong>Structure -> Blocks</strong> menu to change blocks appearance settings.</p>
+            <p>On the opened page you will see all blocks arranged by the corresponding regions. Click <strong>"Configure"</strong> button which is placed to the right of the corresponding block name to access block settings page.
+            You can use Drupal contextual menu feature to access block settings page from the front-end.</p>
+            <p class="notification-box">Note: you should be logged in into the admin panel!</p>
+            <p>Hover needed block with, click on the appeared "gear" and select <strong>"Configure Block"</strong>.</p>
+            <p>Content of standard (default) blocks like "Recent blog posts", "Who is online", "Polls" block can’t be changed, since it’s pre-defined by Drupal CMS creators. The exceptions are custom blocks, third-part modules blocks and blocks created using Views module.</p>
+            <p>There are two ways of editing content of blocks based on the Views module.</p>
+                <ol>
+                    <li>Please go to Structure->Views menu. On the opened page you will see all available views. Click "Edit" button in the last column to access corresponding view’s settings page.</li>
+                    <p class="notification-box">Note: each particular view is not always a block. Views that have "Displays: Block" field are available as Blocks. You can find such Views on the Blocks page basing on the Block name. For example, block created using Views will be entitled "Views : Name block", e.g. "View: Services".</p>
+                    <li>You can use Drupal front-end contextual menu feature for quick access of Views settings. Hover needed block, click on the appeared "gear" and select "Edit View".</li>
+                </ol>
+            
+            <p>Feel free to check the detailed video tutorial below:
+            <a href="http://info.template-help.com/help/drupal-7-how-to-accessedit-blocks-views-and-panels-from-front-end.html">http://info.template-help.com/help/drupal-7-how-to-accessedit-blocks-views-and-panels-from-front-end.html</a></p>
+            </div>
+            
+        
+      <h2 id="manage_menu">6. Setup and manage Main Menu</h2>
+          <div class="inner">
+          	<div class="img-box">
+            	<p align="center"><img src="images/drupal-menu.jpg" alt=""></p>
+            	<div class="extra-wrap" style="padding-top:50px;">
+                    <p>Drupal 7.x comes with a menu management panel, which makes the process of configuration of your site navigation very easy and flexible. With this panel you can even add your own menus.</p>
+                    To edit the menu items just click List menu.<br />
+                    <br />
+                    For more info on Drupal menu configuration, check <a href="http://drupal.org/node/754652">http://drupal.org/node/754652</a>
+              	</div>
+            </div>
+          </div>
+        
+        
+      <h2 id="configure_follow">7. How to configure Follow Site block</h2>
+          <div class="inner">
+          	<p>Please go to <strong>Configuration->Web Services->Site follow links</strong> menu to configure Follow Site block. Please follow the instructions on the opened page.</p>
+<p>Feel free to check the detailed video tutorial below:
+<a href="http://info.template-help.com/help/drupal-how-to-edit-social-icons-block-follow-module.html">http://info.template-help.com/help/drupal-how-to-edit-social-icons-block-follow-module.html</a></p>
+          </div>
+          
+        
+      <h2 id="edit_slider">8. How to edit slider</h2>
+          	<div class="inner">
+            	<p>The slider in Drupal theme is created using the custom content type "Slider" and tirdparty modules. Each slide is a Node with Slider content type.</p>
+                <h4>Edit slider</h4>
+           	  <ol>
+           	  <li>Login into Drupal as administrator</li>
+           	  <li>From the top menu select &quot;<strong>Content</strong>&quot;</li>
+                <li><p>We recommend you to use the search filter to locate the slides faster. Select type &quot;<strong>Slider</strong>&quot; and click the &quot;<strong>Filter</strong>&quot; button.</p> 
+               	  <p align="center"><img src="images/drupal_slides.jpg"></p>
+                </li>
+                <li>In the popup list click "<strong>edit</strong>" link to edit the slide or "<strong>delete</strong>" to remove it</li>
+                <li>The slide can be modified like any other node. You can change the image, title etc</li>
+            </ol>
+            
+            <h4>Add new slide</h4>
+            <ol>
+           	  <li>Click &quot;<strong>Add Content</strong>&quot; link at the top of the Content page</li>
+           	  <li>From the popup list select &quot;<strong>Slider</strong>&quot;</li>
+                <li>Input title, content and the slider image</li>
+            </ol>
+            
+            <h4>Slider module settings</h4>
+            
+            <p>To get access to the slider module settings there are two directions you can follow</p>
+            
+            <ol>
+                <li>Login as administrator</li>
+                <li>Go to the Slider page</li>
+                <li>Hover mouse cursor over the slider. In the top right corner of the slider you should see the gear icon</li>
+                <li><p>Click the gear icon and click &quot;<strong>Edit View</strong>&quot;</p>
+                	<p><img alt="" src="images/slider-options.jpg" /></p>
+                </li>
+            </ol>
+            
+            <p>The other way is to use the Drupal admin panel top menu</p>
+            <ol>                
+                <li>From the top menu select &quot;<strong>Structure</strong>&quot;</li>
+                <li>In the popup list select &quot;<strong>Views</strong>&quot;</li>
+                <li>At the Views page locate &quot;<strong>Slider</strong>&quot; and click &quot;<strong>Edit</strong>&quot;</li>
+            </ol>
+            
+            <p>All slider settings are available from the <strong>Format &gt; Settings</strong> link.</p>
+            <p align="center"><img src="images/drupal_slider_settings.jpg"></p>
+            
+            <p class="notification-box">We do not recommend you to change the settings if you are not sure what to do</p>
+          </div>
+        </article>
+        <!-- Edit Slider end -->
+        
+        
+        
+        <!-- Manage content begin -->
+        <article>
+          <h2 id="manage_content">9. How to manage the content pages</h2>
+          <div class="inner">
+            <p>To create the complex content pages we used the <a href="http://drupal.org/project/panels">Panels</a> module. In a Panel, you can create contexts, which represent the objects being displayed.</p>
+            
+            <h4>How to add new page</h4>
+            <ol>
+                <li>Login as an administrator</li>
+                <li>From the top menu select  &quot;<strong>Structure</strong>&quot; and click  &quot;<strong>Pages</strong>&quot; item</li>
+                <li>On the appeared page click &quot;<strong>Add custom page</strong>&quot; link</li>
+                <li>Then you need to input page &quot;<strong>Administrative title</strong>&quot; and specify the page root. Click &quot;<strong>Continue</strong>&quot;</li>
+                <li>Select category and layout. Click &quot;<strong>Continue</strong>&quot;</li>
+                <li>Select &quot;<strong>Renderer</strong>&quot; and add CSS classes if you need. Click &quot;<strong>Continue</strong>&quot;</li>
+                <li>At the Panel Content page you can define the blocks that will be displayed on the page. Click &quot;<strong>Finish</strong>&quot;</li>
+                <li>You will see the settings page that allows you to configure it the way you need</li>
+                <li>With that done click &quot;<strong>Save</strong>&quot;</li>
+            </ol>
+            
+            <h4>How to edit the page</h4>
+			<ol>
+    			<li>Login as administrator</li>
+    			<li>From the top menu select  &quot;<strong>Structure</strong>&quot; and click  &quot;<strong>Pages</strong>&quot; item</li>
+                <li>You'll see the settings page that allows you to configure it the way you need
+                <li>With that done click &quot;<strong>Save</strong>&quot;</li>
+            </ol>
+          </div>
+          
+          <h2 id="conclusion">10. Conclusion</h2>
+          <div class="inner">
+          	<p>Feel free to check the detailed tutorials and manuals on working with Drupal:</p>
+            <ul>
+            	<li><a href="http://info.template-help.com/cms-blog-templates/drupal/drupal-tutorials/">Drupal tutorials</a></li>
+            	<li><a href="http://drupal.org/documentation">Drupal official manual</a></li>
+            	<li><a href="http://info.template-help.com/drupal-google-map-configuration.html">Drupal. Google Map configuration</a></li>
+            </ul>
+          </div>
+        </article>
+        <!-- Manage content end -->
+        
+      </section>
+      <!-- footer -->
+      <footer id="footer">
+        <div class="inside">
+          theme866
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script type="text/javascript"> 
+
+var _gaq = _gaq || []; 
+_gaq.push(['_setAccount', 'UA-2787305-5']); 
+_gaq.push(['_trackPageview']); 
+
+(function() { 
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; 
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; 
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); 
+})(); 
+
+</script>
+</body>
+</html>
