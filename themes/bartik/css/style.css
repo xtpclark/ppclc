@@ -1763,11 +1763,120 @@ div.admin-panel .description {
 .node-boardmember .field-type-image img {
   display: block;
   padding: 5px 5px 5px 5px;
+  width: 150px;
+  height: auto;
+  max-width: 150px; 
+  max-height: auto;
+
   border:1px solid #;
   border-radius: 20px;
   -khtml-border-radius: 20px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
+//  -moz-box-shadow: 3px 3px 4px #000;
+//  -webkit-box-shadow: 3px 3px 4px #000;
+//  box-shadow: 3px 3px 4px #000;
+  /* For IE 8 */
+//  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+  /* For IE 5.5 - 7 */
+//  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
+
+
+/* ---------------- FundPartner Pages -------------- */
+
+.node-fundpartner {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.node-fundpartner h2 {
+  visibility: hidden;
+}
+
+//.node-fundpartner strong {
+//  color: pink;
+
+//}
+
+//.node-fundpartner em {
+//  color: pink;
+//  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+//}
+
+
+
+.node-fundpartner .field-type-image {
+  float: left; /* LTR */
+//  margin: 0.5em 0 1em 1em; /* LTR */
+  margin: 10px 10px 10px 10px; /* LTR */
+}
+
+.node-fundpartner .field-type-image img {
+  display: block;
+  padding: 5px 5px 5px 5px;
+  width: 175px;
+  height: auto;
+  max-width: 175px; 
+  max-height: auto;
+
+  border:1px solid #;
+  border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+//  -moz-box-shadow: 3px 3px 4px #000;
+//  -webkit-box-shadow: 3px 3px 4px #000;
+//  box-shadow: 3px 3px 4px #000;
+  /* For IE 8 */
+//  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+  /* For IE 5.5 - 7 */
+//  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
+
+
+/* ---------------- ArtPartner Pages -------------- */
+
+.node-artpartner {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.node-artpartner h2 {
+  visibility: hidden;
+}
+
+//.node-artpartner strong {
+//  color: pink;
+
+//}
+
+//.node-artpartner em {
+//  color: pink;
+//  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+//}
+
+
+
+.node-artpartner .field-type-image {
+  float: left; /* LTR */
+//  margin: 0.5em 0 1em 1em; /* LTR */
+  margin: 10px 10px 10px 10px; /* LTR */
+}
+
+.node-artpartner .field-type-image img {
+  display: block;
+  padding: 5px 5px 5px 5px;
+  width: 175px;
+  height: auto;
+  max-width: 175px; 
+  max-height: auto;
+
+  border:1px solid #;
+  border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
 //  -moz-box-shadow: 3px 3px 4px #000;
 //  -webkit-box-shadow: 3px 3px 4px #000;
 //  box-shadow: 3px 3px 4px #000;
