@@ -46,7 +46,7 @@ function crm_core_relation_entity_ui_get_form_wrapper($contact, $type, $reverse)
 }
 
 /**
- * Form builder for CRM Activity forms.
+ * Form builder for CRM Core Activity forms.
  */
 function crm_core_relationship_form($form, &$form_state, $relation) {
   // Ensure this include file is loaded when the form is rebuilt from the cache.

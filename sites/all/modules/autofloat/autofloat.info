@@ -1,0 +1,11 @@
+name = AutoFloat
+description = A text format filter that wraps images in a span with odd/even classes to make them float alternately left and right.
+core = 7.x
+configure = admin/config/content/autofloat
+
+; Information added by Drupal.org packaging script on 2014-02-07
+version = "7.x-2.0"
+core = "7.x"
+project = "autofloat"
+datestamp = "1391808257"
+

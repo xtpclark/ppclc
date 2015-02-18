@@ -6,7 +6,7 @@
  */
 
 /**
- * Include file with hook_property_info().
+ * Include file with hook_entity_property_info().
  */
 module_load_include('inc', 'crm_core_activity', 'crm_core_activity.info');
 
@@ -16,7 +16,7 @@ module_load_include('inc', 'crm_core_activity', 'crm_core_activity.info');
 function crm_core_activity_entity_info() {
   $return = array(
     'crm_core_activity' => array(
-      'label' => t('CRM Activity'),
+      'label' => t('CRM Core Activity'),
       'entity class' => 'CRMCoreActivityEntity',
       'controller class' => 'CRMCoreActivityController',
       'base table' => 'crm_core_activity',
@@ -47,10 +47,11 @@ function crm_core_activity_entity_info() {
         'singular' => t('activity'),
         'plural' => t('activities'),
       ),
+      'token type' => 'crm-core-activity',
     ),
   );
   $return['crm_core_activity_type'] = array(
-    'label' => t('CRM Activity Type'),
+    'label' => t('CRM Core Activity Type'),
     'entity class' => 'CRMActivityType',
     'controller class' => 'CRMCoreActivityTypeController',
     'base table' => 'crm_core_activity_type',
@@ -70,12 +71,64 @@ function crm_core_activity_entity_info() {
       'controller class' => 'EntityDefaultUIController',
     ),
     'access callback' => 'crm_core_activity_type_access',
+    'token type' => 'crm-core-activity-type',
   );
 
   if (module_exists('uuid')) {
     $return['crm_core_activity']['uuid'] = TRUE;
     $return['crm_core_activity']['entity keys']['uuid'] = 'uuid';
     $return['crm_core_activity']['entity keys']['revision uuid'] = 'vuuid';
+  }
+
+  if (module_exists('entity_translation')) {
+    $return['crm_core_activity'] += array(
+      'translation' => array(
+        'entity_translation' => array(
+          'base path' => 'crm-core/activity/%crm_core_activity',
+        ),
+      ),
+    );
+  }
+
+  if (module_exists('title')) {
+    $field = array(
+      'type' => 'text',
+      'cardinality' => 1,
+      'translatable' => TRUE,
+    );
+
+    $instance = array(
+      'label' => t('Title'),
+      'description' => '',
+      'required' => TRUE,
+      'settings' => array(
+        'text_processing' => 0,
+      ),
+      'widget' => array(
+        'weight' => -5,
+      ),
+      'display' => array(
+        'default' => array(
+          'type' => 'hidden',
+        ),
+      ),
+    );
+
+    $return['crm_core_activity'] += array(
+      'field replacement' => array(
+        'title' => array(
+          'field' => $field,
+          'instance' => $instance,
+        ),
+      ),
+      'efq bundle conditions' => TRUE,
+    );
+  }
+
+  if (module_exists('inline_entity_form')) {
+    $return['crm_core_activity']['inline entity form'] = array(
+      'controller' => 'EntityInlineEntityFormController',
+    );
   }
 
   return $return;
@@ -118,6 +171,17 @@ function crm_core_activity_permission() {
 }
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ *
+ * Lets the system know where our task and task_handler plugins are.
+ */
+function crm_core_activity_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'page_manager' && $plugin_type == 'tasks') {
+    return 'plugins/' . $plugin_type;
+  }
+}
+
+/**
  * Access callback for activity.
  */
 function crm_core_activity_access($op, $activity, $account = NULL, $entity_type = NULL) {
@@ -131,17 +195,14 @@ function crm_core_activity_access($op, $activity, $account = NULL, $entity_type 
     $activity_type = $activity;
   }
 
-  if ($op != 'view') {
-    // First grant access to the entity for the specified operation if no other
-    // module denies it and at least one other module says to grant access.
-    $access_results = module_invoke_all('crm_core_entity_access', $op, $activity, $account, $entity_type);
-
-    if (in_array(FALSE, $access_results, TRUE)) {
-      return FALSE;
-    }
-    elseif (in_array(TRUE, $access_results, TRUE)) {
-      return TRUE;
-    }
+  // First grant access to the entity for the specified operation if no other
+  // module denies it and at least one other module says to grant access.
+  $access_results = module_invoke_all('crm_core_entity_access', $op, $activity, $account, $entity_type);
+  if (in_array(FALSE, $access_results, TRUE)) {
+    return FALSE;
+  }
+  elseif (in_array(TRUE, $access_results, TRUE)) {
+    return TRUE;
   }
 
   switch ($op) {
@@ -190,11 +251,11 @@ function crm_core_activity_type_access() {
 }
 
 /* ***************************************************************************
- * ***  CRM Activity helpers  ************************************************
+ * ***  CRM Core Activity helpers  ************************************************
  * ************************************************************************* */
 
 /**
- * Load a CRM Activity object.
+ * Load a CRM Core Activity object.
  */
 function crm_core_activity_load($activity_id, $reset = FALSE) {
   if (empty($activity_id)) {
@@ -270,7 +331,7 @@ function crm_core_activity_field_extra_fields() {
 }
 
 /* ***************************************************************************
- * ***  CRM Activity Type helpers  *******************************************
+ * ***  CRM Core Activity Type helpers  *******************************************
  * ************************************************************************* */
 
 /**
@@ -442,7 +503,7 @@ function crm_core_activity_crm_core_contact_delete($crm_core_contact) {
  */
 function crm_core_activity_search_info() {
   return array(
-    'title' => t('CRM Core activities'),
+    'title' => t('CRM Core Activities'),
     'path' => 'activity',
   );
 }
@@ -460,7 +521,7 @@ function crm_core_activity_search_access() {
 function crm_core_activity_search_reset() {
   db_update('search_dataset')
     ->fields(array('reindex' => REQUEST_TIME))
-    ->condition('type', 'crm_core_activity')
+    ->condition('type', 'cmc_activity')
     ->execute();
 }
 
@@ -469,7 +530,7 @@ function crm_core_activity_search_reset() {
  */
 function crm_core_activity_search_status() {
   $total = db_query('SELECT COUNT(*) FROM {crm_core_activity}')->fetchField();
-  $remaining = db_query("SELECT COUNT(*) FROM {crm_core_activity} a LEFT JOIN {search_dataset} d ON d.type = 'crm_core_activity' AND d.sid = a.activity_id WHERE d.sid IS NULL OR d.reindex <> 0")->fetchField();
+  $remaining = db_query("SELECT COUNT(*) FROM {crm_core_activity} a LEFT JOIN {search_dataset} d ON d.type = 'cmc_activity' AND d.sid = a.activity_id WHERE d.sid IS NULL OR d.reindex <> 0")->fetchField();
   return array('remaining' => $remaining, 'total' => $total);
 }
 
@@ -479,10 +540,10 @@ function crm_core_activity_search_status() {
 function crm_core_activity_search_execute($keys = NULL, $conditions = NULL) {
   $query = db_select('search_index', 'i', array('target' => 'slave'))->extend('SearchQuery')->extend('PagerDefault');
   $query->join('crm_core_activity', 'a', 'a.activity_id = i.sid');
-  $query->searchExpression($keys, 'crm_core_activity');
+  $query->searchExpression($keys, 'cmc_activity');
 
   // Insert special keywords.
-  $query->setOption('type', 'a.type');
+  $query->setOption('type', 'cmc_activity');
   $query->setOption('language', 'a.language');
 
   // Only continue if the first pass query matches.
@@ -542,7 +603,7 @@ function crm_core_activity_search_conditions_callback($keys) {
 function crm_core_activity_update_index() {
   $limit = (int) variable_get('search_cron_limit', 100);
 
-  $result = db_query_range("SELECT a.activity_id FROM {crm_core_activity} a LEFT JOIN {search_dataset} d ON d.type = 'crm_core_activity' AND d.sid = a.activity_id WHERE d.sid IS NULL OR d.reindex <> 0 ORDER BY d.reindex ASC, a.activity_id ASC", 0, $limit);
+  $result = db_query_range("SELECT a.activity_id FROM {crm_core_activity} a LEFT JOIN {search_dataset} d ON d.type = 'cmc_activity' AND d.sid = a.activity_id WHERE d.sid IS NULL OR d.reindex <> 0 ORDER BY d.reindex ASC, a.activity_id ASC", 0, $limit);
 
   foreach ($result as $activity) {
     $activity = crm_core_activity_load($activity->activity_id);
@@ -550,7 +611,7 @@ function crm_core_activity_update_index() {
 
     // Render the activity.
     $text = drupal_render(crm_core_activity_view($activity));
-    search_index($activity->activity_id, 'crm_core_activity', $text);
+    search_index($activity->activity_id, 'cmc_activity', $text);
   }
 }
 
@@ -559,7 +620,7 @@ function crm_core_activity_update_index() {
  */
 function crm_core_activity_feeds_plugins() {
   $info['CRMFeedsActivityProcessor'] = array(
-    'name' => 'CRM Activity processor',
+    'name' => 'CRM Core Activity processor',
     'description' => 'Create and update CRM activities.',
     'help' => 'Create and update CRM activities from parsed content.',
     'handler' => array(

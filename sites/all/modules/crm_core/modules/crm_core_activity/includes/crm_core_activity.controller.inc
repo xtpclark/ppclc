@@ -6,7 +6,7 @@
  */
 
 /**
- * CRM Activity Entity Class.
+ * CRM Core Activity Entity Class.
  */
 class CRMCoreActivityEntity extends Entity {
   protected function defaultLabel() {
@@ -24,7 +24,7 @@ class CRMCoreActivityEntity extends Entity {
 }
 
 /**
- * Controller class for CRM Activity.
+ * Controller class for CRM Core Activity.
  */
 class CRMCoreActivityController extends EntityAPIController {
   public function create(array $values = array()) {
@@ -70,7 +70,7 @@ class CRMActivityType extends Entity {
 }
 
 /**
- * Controller class for CRM Activity Type.
+ * Controller class for CRM Core Activity Type.
  */
 class CRMCoreActivityTypeController extends EntityAPIControllerExportable {
   public function create(array $values = array()) {

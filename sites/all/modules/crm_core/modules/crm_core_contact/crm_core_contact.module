@@ -42,6 +42,7 @@ function crm_core_contact_entity_info() {
         'singular' => t('contact'),
         'plural' => t('contacts'),
       ),
+      'token type' => 'crm-core-contact',
     ),
   );
 
@@ -66,12 +67,29 @@ function crm_core_contact_entity_info() {
       'controller class' => 'EntityDefaultUIController',
     ),
     'access callback' => 'crm_core_contact_type_access',
+    'token type' => 'crm-core-contact-type',
   );
 
   if (module_exists('uuid')) {
     $return['crm_core_contact']['uuid'] = TRUE;
     $return['crm_core_contact']['entity keys']['uuid'] = 'uuid';
     $return['crm_core_contact']['entity keys']['revision uuid'] = 'vuuid';
+  }
+
+  if (module_exists('entity_translation')) {
+    $return['crm_core_contact'] += array(
+      'translation' => array(
+        'entity_translation' => array(
+          'base path' => 'crm-core/contact/%crm_core_contact',
+        ),
+      ),
+    );
+  }
+
+  if (module_exists('inline_entity_form')) {
+    $return['crm_core_contact']['inline entity form'] = array(
+      'controller' => 'EntityInlineEntityFormController',
+    );
   }
 
   return $return;
@@ -129,22 +147,6 @@ function crm_core_contact_entity_property_info() {
     'getter callback' => 'crm_core_contact_get_primary_phone_field_value',
     'computed' => TRUE,
   );
-
-  if (module_exists('uuid')) {
-    $info['crm_core_contact']['properties']['uuid'] = array(
-      'label' => t('UUID'),
-      'type' => 'text',
-      'description' => t('The universally unique ID.'),
-      'schema field' => 'uuid',
-    );
-
-    $info['crm_core_contact']['properties']['vuuid'] = array(
-      'label' => t('Revision UUID'),
-      'type' => 'text',
-      'description' => t("The revision's universally unique ID."),
-      'schema field' => 'vuuid',
-    );
-  }
 
   return $info;
 }
@@ -282,17 +284,14 @@ function crm_core_contact_access($op, $contact, $account = NULL, $entity_type = 
     $contact_type = $contact;
   }
 
-  if ($op != 'view' && $op != 'create_view') {
-    // First grant access to the entity for the specified operation if no other
-    // module denies it and at least one other module says to grant access.
-    $access_results = module_invoke_all('crm_core_entity_access', $op, $contact, $account, $entity_type);
-
-    if (in_array(FALSE, $access_results, TRUE)) {
-      return FALSE;
-    }
-    elseif (in_array(TRUE, $access_results, TRUE)) {
-      return TRUE;
-    }
+  // First grant access to the entity for the specified operation if no other
+  // module denies it and at least one other module says to grant access.
+  $access_results = module_invoke_all('crm_core_entity_access', $op, $contact, $account, $entity_type);
+  if (in_array(FALSE, $access_results, TRUE)) {
+    return FALSE;
+  }
+  elseif (in_array(TRUE, $access_results, TRUE)) {
+    return TRUE;
   }
 
   $administer_contact = user_access('administer crm_core_contact entities', $account);
@@ -511,7 +510,7 @@ function crm_core_contact_label($entity) {
   // Default is person's name.
   $field = field_view_field('crm_core_contact', $entity, 'contact_name', array('settings' => array('output' => 'raw')));
 
-  return $field[0]['#markup'];
+  return isset($field[0]['#markup']) ? $field[0]['#markup'] : '';
 }
 
 /**
@@ -599,16 +598,14 @@ function crm_core_contact_types($active = FALSE) {
   $contact_types =& drupal_static(__FUNCTION__);
 
   // If it did not exist, fetch the types now.
-  if (!isset($contact_types)) {
-    if ($active) {
-      $contact_types = db_query('SELECT * FROM {crm_core_contact_type} WHERE disabled = 0')->fetchAllAssoc('type');
-    }
-    else {
-      $contact_types = db_query('SELECT * FROM {crm_core_contact_type}')->fetchAllAssoc('type');
-    }
+  if ($active && !isset($contact_types['active'])) {
+    $contact_types['active'] = db_query('SELECT * FROM {crm_core_contact_type} WHERE disabled = 0')->fetchAllAssoc('type');
+  }
+  elseif (!$active && !isset($contact_types['all'])) {
+    $contact_types['all'] = db_query('SELECT * FROM {crm_core_contact_type}')->fetchAllAssoc('type');
   }
 
-  return $contact_types;
+  return $active ? $contact_types['active'] : $contact_types['all'];
 }
 
 /**
@@ -1094,7 +1091,7 @@ function crm_core_contact_action_info() {
 /**
  * Form builder for creating a household.
  */
-function crm_core_contact_join_into_household_action_form($context, &$form_state) {
+function crm_core_contact_join_into_household_action_form($context, &$form_state = array()) {
   module_load_include('inc', 'crm_core_contact_ui', 'crm_core_contact_ui.pages');
   $household = entity_create('crm_core_contact', array('type' => 'household'));
   $form = crm_core_contact_ui_form(array(), $form_state, $household);

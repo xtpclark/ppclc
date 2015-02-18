@@ -120,7 +120,7 @@ function social_media_links_form($values) {
         '#title_display' => 'invisible',
         '#delta' => 10,
         '#default_value' => isset($platform_values[$key]['weight']) ? $platform_values[$key]['weight'] : $i + 1,
-        '#attributes' => array('class' => 'weight'),
+        '#attributes' => array('class' => array('weight')),
       ),
     );
     $i++;
@@ -289,20 +289,26 @@ function social_media_links_block_view($delta = '') {
   $block = array();
   switch ($delta) {
     case 'social-media-links':
-      $block['subject'] = t('Follow Us');
-      $block['content'] = array(
-        '#theme' => 'social_media_links_platforms',
-        '#platform_values' => variable_get('social_media_links_platforms', array()),
-        '#icon_style' => variable_get('social_media_links_icon_style'),
-        '#appearance' => variable_get('social_media_links_appearance'),
-        '#link_attributes' => variable_get('social_media_links_link_attributes'),
-        '#attributes' => array(
-          'class' => array('social-media-links', 'platforms'),
-        ),
-      );
+      $platforms = variable_get('social_media_links_platforms', array());
+      $platforms = _social_media_links_cleanup_platforms($platforms);
 
-      // Add css to the block.
-      $block['content']['#attached']['css'][] = drupal_get_path('module', 'social_media_links') . '/social_media_links.css';
+      if (count($platforms) > 0) {
+        $block['subject'] = t('Follow Us');
+        $block['content'] = array(
+          '#theme' => 'social_media_links_platforms',
+          '#platform_values' => $platforms,
+          '#icon_style' => variable_get('social_media_links_icon_style'),
+          '#appearance' => variable_get('social_media_links_appearance'),
+          '#link_attributes' => variable_get('social_media_links_link_attributes'),
+          '#attributes' => array(
+            'class' => array('social-media-links', 'platforms'),
+          ),
+        );
+
+        // Add css to the block.
+        $block['content']['#attached']['css'][] = drupal_get_path('module', 'social_media_links') . '/social_media_links.css';
+      }
+
       break;
   }
 
@@ -315,42 +321,36 @@ function social_media_links_block_view($delta = '') {
  * @see theme_social_media_links_platforms()
  */
 function template_preprocess_social_media_links_platforms(&$variables) {
-  if (count($variables['platform_values']) >= 1) {
-    $platform_infos = social_media_links_platforms();
-    $icon_style = explode(':', $variables['icon_style']);
+  $platform_infos = social_media_links_platforms();
+  $icon_style = explode(':', $variables['icon_style']);
 
-    // Apply the link settings to the render array.
-    foreach ($variables['link_attributes'] as $key => $value) {
-      if ($value == '<none>') {
-        unset($variables['link_attributes'][$key]);
-      }
+  // Apply the link settings to the render array.
+  foreach ($variables['link_attributes'] as $key => $value) {
+    if ($value == '<none>') {
+      unset($variables['link_attributes'][$key]);
     }
+  }
 
-    // Sort and loop over the platforms.
-    uasort($variables['platform_values'], 'drupal_sort_weight');
-    foreach ($variables['platform_values'] as $platform_name => $platform_value) {
-      if (empty($platform_value['platform_value'])) {
-        continue;
-      }
+  // Sort and loop over the platforms.
+  uasort($variables['platform_values'], 'drupal_sort_weight');
+  foreach ($variables['platform_values'] as $platform_name => $platform_value) {
+    // Build the platform data array.
+    $variables['platforms'][$platform_name] = array(
+      '#theme' => 'social_media_links_platform',
+      '#name' => $platform_name,
+      '#info' => $platform_infos[$platform_name],
+      '#value' => $platform_value['platform_value'],
+      '#icon_style' => $icon_style,
+      '#appearance' => $variables['appearance'],
+      '#attributes' => $variables['link_attributes'],
+    );
+  }
 
-      // Build the platform data array.
-      $variables['platforms'][$platform_name] = array(
-        '#theme' => 'social_media_links_platform',
-        '#name' => $platform_name,
-        '#info' => $platform_infos[$platform_name],
-        '#value' => $platform_value['platform_value'],
-        '#icon_style' => $icon_style,
-        '#appearance' => $variables['appearance'],
-        '#attributes' => $variables['link_attributes'],
-      );
-    }
-
-    if ($variables['appearance']['orientation'] == 'h') {
-      $variables['attributes']['class'][] = 'inline horizontal';
-    }
-    else {
-      $variables['attributes']['class'][] = 'vertical';
-    }
+  if ($variables['appearance']['orientation'] == 'h') {
+    $variables['attributes']['class'][] = 'inline horizontal';
+  }
+  else {
+    $variables['attributes']['class'][] = 'vertical';
   }
 }
 
@@ -691,6 +691,26 @@ function theme_social_media_links_platforms_table(&$variables) {
   drupal_add_tabledrag('platforms-order', 'order', 'silbing', 'platforms-order-weight');
 
   return $output;
+}
+
+/**
+ * Helper function to clean up the platforms array from the empty
+ * values.
+ *
+ * @param array $platforms
+ *   The array with the platforms.
+ *
+ * @return array
+ *   The cleaned platforms array.
+ */
+function _social_media_links_cleanup_platforms($platforms) {
+  foreach ((array) $platforms as $key => $platform) {
+    if (empty($platform['platform_value'])) {
+      unset($platforms[$key]);
+    }
+  }
+
+  return $platforms;
 }
 
 /**

@@ -35,7 +35,7 @@ function social_media_links_social_media_links_platform_info() {
 
   $platforms['pinterest'] = array(
     'title' => t('Pinterest'),
-    'base url' => 'http://www.pinterest.com',
+    'base url' => 'http://www.pinterest.com/',
   );
 
   $platforms['vimeo'] = array(
@@ -46,6 +46,11 @@ function social_media_links_social_media_links_platform_info() {
   $platforms['youtube'] = array(
     'title' => t('YouTube'),
     'base url' => 'http://www.youtube.com/user/',
+  );
+
+  $platforms['youtube_channel'] = array(
+    'title' => t('Youtube (Channel)'),
+    'base url' => 'http://www.youtube.com/channel/',
   );
 
   $platforms['rss'] = array(

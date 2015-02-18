@@ -51,19 +51,13 @@ function _postal_code_validation_validate_US($postal_code) {
       $return['province'] = 'PR';
       $return['country'] = 'PR';
     }
-    elseif ($zip_code_prefix <= 26) {
+    elseif ($zip_code_prefix <= 27) {
       $return['province'] = 'MA';
     }
     elseif ($zip_code_prefix <= 29) {
       $return['province'] = 'RI';
     }
-    elseif ($zip_code_prefix <= 34) {
-      $return['province'] = 'NH';
-    }
-    elseif ($zip_code_prefix <= 37) {
-      $return['province'] = 'VT';
-    }
-    elseif ($zip_code_prefix <= 39) {
+    elseif ($zip_code_prefix <= 38) {
       $return['province'] = 'NH';
     }
     elseif ($zip_code_prefix <= 49) {
@@ -114,19 +108,13 @@ function _postal_code_validation_validate_US($postal_code) {
       $return['province'] = 'MD';
     }
     elseif ($zip_code_prefix <= 213) {
-      $return['province'] = 'FALSE';
+      $return['province'] = FALSE;
     }
     elseif ($zip_code_prefix <= 219) {
       $return['province'] = 'MD';
     }
-    elseif ($zip_code_prefix <= 245) {
+    elseif ($zip_code_prefix <= 246) {
       $return['province'] = 'VA';
-    }
-    elseif ($zip_code_prefix <= 266) {
-      $return['province'] = 'WV';
-    }
-    elseif ($zip_code_prefix <= 267) {
-      $return['province'] = 'MD';
     }
     elseif ($zip_code_prefix <= 268) {
       $return['province'] = 'WV';
@@ -137,19 +125,10 @@ function _postal_code_validation_validate_US($postal_code) {
     elseif ($zip_code_prefix <= 289) {
       $return['province'] = 'NC';
     }
-    elseif ($zip_code_prefix <= 296) {
+    elseif ($zip_code_prefix <= 299) {
       $return['province'] = 'SC';
     }
-    elseif ($zip_code_prefix <= 297) {
-      $return['province'] = 'NC';
-    }
 
-    elseif ($zip_code_prefix <= 306) {
-      $return['province'] = 'GA';
-    }
-    elseif ($zip_code_prefix <= 307) {
-      $return['province'] = 'TN';
-    }
     elseif ($zip_code_prefix <= 319) {
       $return['province'] = 'GA';
     }
@@ -180,13 +159,10 @@ function _postal_code_validation_validate_US($postal_code) {
     elseif ($zip_code_prefix <= 349) {
       $return['province'] = 'FL';
     }
-    elseif ($zip_code_prefix <= 368) {
+    elseif ($zip_code_prefix <= 369) {
       $return['province'] = 'AL';
     }
-    elseif ($zip_code_prefix <= 369) {
-      $return['province'] = 'MS';
-    }
-    elseif ($zip_code_prefix <= 386) {
+    elseif ($zip_code_prefix <= 385) {
       $return['province'] = 'TN';
     }
     elseif ($zip_code_prefix <= 397) {
@@ -196,23 +172,11 @@ function _postal_code_validation_validate_US($postal_code) {
       $return['province'] = 'GA';
     }
 
-    elseif ($zip_code_prefix <= 409) {
-      $return['province'] = 'KY';
-    }
-    elseif ($zip_code_prefix <= 410) {
-      $return['province'] = 'OH';
-    }
     elseif ($zip_code_prefix <= 418) {
       $return['province'] = 'KY';
     }
     elseif ($zip_code_prefix <= 419) {
       $return['province'] = FALSE;
-    }
-    elseif ($zip_code_prefix <= 423) {
-      $return['province'] = 'KY';
-    }
-    elseif ($zip_code_prefix <= 424) {
-      $return['province'] = 'IN';
     }
     elseif ($zip_code_prefix <= 427) {
       $return['province'] = 'KY';
@@ -223,15 +187,6 @@ function _postal_code_validation_validate_US($postal_code) {
     elseif ($zip_code_prefix <= 459) {
       $return['province'] = 'OH';
     }
-    elseif ($zip_code_prefix <= 469) {
-      $return['province'] = 'IN';
-    }
-    elseif ($zip_code_prefix <= 470) {
-      $return['province'] = 'OH';
-    }
-    elseif ($zip_code_prefix <= 471) {
-      $return['province'] = 'KY';
-    }
     elseif ($zip_code_prefix <= 479) {
       $return['province'] = 'IN';
     }
@@ -239,23 +194,11 @@ function _postal_code_validation_validate_US($postal_code) {
       $return['province'] = 'MI';
     }
 
-    elseif ($zip_code_prefix <= 514) {
-      $return['province'] = 'IA';
-    }
-    elseif ($zip_code_prefix <= 515) {
-      $return['province'] = 'NE';
-    }
     elseif ($zip_code_prefix <= 516) {
       $return['province'] = 'IA';
     }
     elseif ($zip_code_prefix <= 519) {
       $return['province'] = FALSE;
-    }
-    elseif ($zip_code_prefix <= 526) {
-      $return['province'] = 'IA';
-    }
-    elseif ($zip_code_prefix <= 527) {
-      $return['province'] = 'IL';
     }
     elseif ($zip_code_prefix <= 528) {
       $return['province'] = 'IA';
@@ -274,12 +217,6 @@ function _postal_code_validation_validate_US($postal_code) {
     }
     elseif ($zip_code_prefix <= 536) {
       $return['province'] = FALSE;
-    }
-    elseif ($zip_code_prefix <= 539) {
-      $return['province'] = 'WI';
-    }
-    elseif ($zip_code_prefix <= 540) {
-      $return['province'] = 'MN';
     }
     elseif ($zip_code_prefix <= 549) {
       $return['province'] = 'WI';
@@ -312,20 +249,14 @@ function _postal_code_validation_validate_US($postal_code) {
       $return['province'] = FALSE;
     }
     elseif ($zip_code_prefix <= 599) {
-      $return['province'] = 'NT';
+      $return['province'] = 'MT';
     }
 
-    elseif ($zip_code_prefix <= 619) {
-      $return['province'] = 'IL';
-    }
     elseif ($zip_code_prefix <= 620) {
-      $return['province'] = 'MO';
+      $return['province'] = 'IL';
     }
     elseif ($zip_code_prefix <= 621) {
       $return['province'] = FALSE;
-    }
-    elseif ($zip_code_prefix <= 622) {
-      $return['province'] = 'MO';
     }
     elseif ($zip_code_prefix <= 629) {
       $return['province'] = 'IL';
@@ -335,12 +266,6 @@ function _postal_code_validation_validate_US($postal_code) {
     }
     elseif ($zip_code_prefix <= 632) {
       $return['province'] = FALSE;
-    }
-    elseif ($zip_code_prefix <= 633) {
-      $return['province'] = 'MO';
-    }
-    elseif ($zip_code_prefix <= 635) {
-      $return['province'] = 'IL';
     }
     elseif ($zip_code_prefix <= 641) {
       $return['province'] = 'MO';
@@ -394,18 +319,6 @@ function _postal_code_validation_validate_US($postal_code) {
     elseif ($zip_code_prefix <= 715) {
       $return['province'] = FALSE;
     }
-    elseif ($zip_code_prefix <= 717) {
-      $return['province'] = 'AR';
-    }
-    elseif ($zip_code_prefix <= 718) {
-      $return['province'] = 'TX';
-    }
-    elseif ($zip_code_prefix <= 722) {
-      $return['province'] = 'AR';
-    }
-    elseif ($zip_code_prefix <= 723) {
-      $return['province'] = 'TN';
-    }
     elseif ($zip_code_prefix <= 729) {
       $return['province'] = 'AR';
     }
@@ -417,12 +330,6 @@ function _postal_code_validation_validate_US($postal_code) {
     }
     elseif ($zip_code_prefix <= 733) {
       $return['province'] = 'TX';
-    }
-    elseif ($zip_code_prefix <= 738) {
-      $return['province'] = 'OK';
-    }
-    elseif ($zip_code_prefix <= 739) {
-      $return['province'] = 'KS';
     }
     elseif ($zip_code_prefix <= 741) {
       $return['province'] = 'OK';
@@ -456,9 +363,6 @@ function _postal_code_validation_validate_US($postal_code) {
       $return['province'] = 'ID';
     }
     elseif ($zip_code_prefix <= 839) {
-      $return['province'] = 'WA';
-    }
-    elseif ($zip_code_prefix <= 839) {
       $return['province'] = FALSE;
     }
     elseif ($zip_code_prefix <= 847) {
@@ -485,11 +389,8 @@ function _postal_code_validation_validate_US($postal_code) {
     elseif ($zip_code_prefix <= 862) {
       $return['province'] = FALSE;
     }
-    elseif ($zip_code_prefix <= 864) {
-      $return['province'] = 'AZ';
-    }
     elseif ($zip_code_prefix <= 865) {
-      $return['province'] = 'NM';
+      $return['province'] = 'AZ';
     }
     elseif ($zip_code_prefix <= 869) {
       $return['province'] = FALSE;
@@ -538,13 +439,10 @@ function _postal_code_validation_validate_US($postal_code) {
       $return['province'] = 'CA';
     }
     elseif ($zip_code_prefix <= 929) {
-      $return['province'] = 'FALSE';
-    }
-    elseif ($zip_code_prefix <= 960) {
-      $return['province'] = 'CA';
+      $return['province'] = FALSE;
     }
     elseif ($zip_code_prefix <= 961) {
-      $return['province'] = 'NV';
+      $return['province'] = 'CA';
     }
     elseif ($zip_code_prefix <= 966) {
       $return['province'] = 'AP';
@@ -557,26 +455,17 @@ function _postal_code_validation_validate_US($postal_code) {
       // Also PW, FM, MP, MH, handled above.
       $return['province'] = 'GU';
     }
-    elseif ($zip_code_prefix <= 978) {
-      $return['province'] = 'OR';
-    }
     elseif ($zip_code_prefix <= 979) {
-      $return['province'] = 'ID';
-    }
-    elseif ($zip_code_prefix <= 985) {
-      $return['province'] = 'WA';
+      $return['province'] = 'OR';
     }
     elseif ($zip_code_prefix <= 986) {
-      $return['province'] = 'OR';
+      $return['province'] = 'WA';
     }
     elseif ($zip_code_prefix <= 987) {
       $return['province'] = FALSE;
     }
-    elseif ($zip_code_prefix <= 993) {
-      $return['province'] = 'WA';
-    }
     elseif ($zip_code_prefix <= 994) {
-      $return['province'] = 'ID';
+      $return['province'] = 'WA';
     }
     else {
       $return['province'] = 'AK';

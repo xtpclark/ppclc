@@ -83,6 +83,10 @@ function social_media_links_path_elegantthemes($platform = 'twitter', $style = N
     case 'contact':
       $platform = 'email';
       break;
+
+    case 'youtube_channel':
+      $platform = 'youtube';
+      break;
   }
 
   $path = isset($info['path']) ? $info['path'] . '/PNG/' . $platform . '.png' : '';
@@ -111,6 +115,9 @@ function social_media_links_path_nouveller($platform = 'twitter', $style = '32')
       break;
     case 'googleplus':
       $platform = 'google';
+      break;
+    case 'youtube_channel':
+      $platform = 'youtube';
       break;
   }
 
@@ -142,6 +149,10 @@ function social_media_links_path_themeid($platform = 'twitter', $style = '32') {
     case 'googleplus':
       $platform = 'google';
       break;
+
+    case 'youtube_channel':
+      $platform = 'youtube';
+      break;
   }
 
   $path = isset($info['path']) ? $info['path'] . '/' . $platform . '-icon.png' : '';
@@ -167,6 +178,10 @@ function social_media_links_path_webtoolkit($platform = 'twitter', $style = '32'
   switch ($platform) {
     case 'googleplus':
       $platform = 'google';
+      break;
+
+    case 'youtube_channel':
+      $platform = 'youtube';
       break;
   }
 

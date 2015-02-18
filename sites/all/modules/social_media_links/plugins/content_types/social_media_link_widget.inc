@@ -66,9 +66,11 @@ function social_media_links_widget_form_submit($form, &$form_state) {
 function social_media_links_widget_render($subtype, $conf, $panel_args) {
   $block = new stdClass();
 
+  $platforms = _social_media_links_cleanup_platforms($conf['platforms']);
+
   $content = array(
     '#theme' => 'social_media_links_platforms',
-    '#platform_values' => $conf['platforms'],
+    '#platform_values' => $platforms,
     '#icon_style' => $conf['icon_style'],
     '#appearance' => $conf['appearance'],
     '#link_attributes' => $conf['link_attributes'],
